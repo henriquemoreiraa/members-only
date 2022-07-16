@@ -2,8 +2,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const asyncHandler = require('express-async-handler');
 const User = require('../modules/userModules');
-const { use } = require('../routes/userRoutes');
-const { findById } = require('../modules/userModules');
 
 const registerUser = asyncHandler( async (req, res) => {
     const { name, email, password } = req.body
@@ -38,6 +36,7 @@ const registerUser = asyncHandler( async (req, res) => {
             member_status: user.member_status,
             token: generateToken(user._id)
         });
+
     } else {
         res.status(400);
         throw new Error('Invalid user data')
@@ -50,13 +49,15 @@ const loginUser = asyncHandler( async (req, res) => {
     const user = await User.findOne({ email });
     
     if (user && (await bcrypt.compare(password, user.password))) {
-        res.json({
+
+        res.status(201).json({
             _id: user.id,
             name: user.name,
             email: user.email,
             member_status: user.member_status,
             token: generateToken(user._id)
         });
+    
     } else {
         res.status(400);
         throw new Error('Invalid credentials');
@@ -82,5 +83,5 @@ module.exports = {
     registerUser,
     loginUser,
     getUser,
-    deleteUser
+    deleteUser,
 };

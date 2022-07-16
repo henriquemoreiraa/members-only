@@ -5,10 +5,14 @@ const postSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    user: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User',
+    }, 
+    userName: {
+        type: String,
+        require: true
     }
 }, {
     timestamps: true,

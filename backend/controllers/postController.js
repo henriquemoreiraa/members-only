@@ -1,8 +1,9 @@
 const Post = require('../modules/postModules');
 const asyncHandler = require('express-async-handler');
-const { post } = require('../routes/userRoutes');
+const User = require('../modules/userModules');
 
 const getPost = asyncHandler(async (req, res) => {
+ 
     const posts = await Post.find();
 
     res.status(200).json(posts);
@@ -14,9 +15,12 @@ const postPost = asyncHandler(async (req, res) => {
         throw new Error('Please add a post');
     };
 
+    const user = await User.findById(req.user.id);
+
     const post = await Post.create({
         post: req.body.post,
-        user: req.user.id
+        userName: user.name, 
+        userId: req.user.id
     });
 
     res.status(200).json(post);
