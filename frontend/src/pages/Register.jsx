@@ -1,26 +1,25 @@
-import { useState, useEffect } from 'react' 
+import { useNavigate } from 'react-router-dom' 
 import { RiUser3Fill } from 'react-icons/ri'
+import { useContext } from 'react'
+import { Context } from '../context/AuthContext'
 
 function Register() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    password2: ''
-  })
+  const navigate = useNavigate()
+
+  const { handleRegister, formData, setFormData } = useContext(Context)
 
   const { name, email, password, password2 } = formData
 
-  const onChange = (e) => {
-    setFormData(prevState => ({
-      ...prevState,
-      [e.taget.name]: e.target.value
-    }))
-  }
-
   const onSubmit= (e) => {
     e.preventDefault()
-  }
+
+    if (password === password2) {
+      handleRegister()
+      navigate('/posts')
+    } else {     
+      window.alert("Passwords don't match.")
+  } 
+}
 
   return (
     <>
@@ -40,7 +39,8 @@ function Register() {
               name='name'
               value={name}
               placeholder='Enter your name'
-              onChange={onChange}
+              onChange={(e) => setFormData(prevState => ({ ...prevState, name: e.target.value }))}
+              required
             />
           </div>
           <div className='form-group'>
@@ -51,7 +51,8 @@ function Register() {
               name='email'
               value={email}
               placeholder='Enter your email'
-              onChange={onChange}
+              onChange={(e) => setFormData(prevState => ({ ...prevState, email: e.target.value }))}
+              required
             />
           </div>
           <div className='form-group'>
@@ -62,7 +63,8 @@ function Register() {
               name='password'
               value={password}
               placeholder='Enter your password'
-              onChange={onChange}
+              onChange={(e) => setFormData(prevState => ({ ...prevState, password: e.target.value }))}
+              required
             />
           </div>
           <div className='form-group'>
@@ -73,7 +75,8 @@ function Register() {
               name='password2'
               value={password2}
               placeholder='Confirm password'
-              onChange={onChange}
+              onChange={(e) => setFormData(prevState => ({ ...prevState, password2: e.target.value }))}
+              required
             />
           </div>
           <div className="form-group">

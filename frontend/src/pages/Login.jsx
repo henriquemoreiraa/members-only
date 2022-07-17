@@ -1,39 +1,34 @@
 import { useContext } from 'react'
 import { useState, useEffect } from 'react' 
 import { RiLoginBoxLine } from 'react-icons/ri'
-import api from '../api'
 import { Context } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  })
+  // const [formData, setFormData] = useState({
+  //   email: '',
+  //   password: '',
+  // })
 
-  const { authenticated, handleLogin } = useContext(Context)
+  const navigate = useNavigate()
+  const { handleLogin, formData, setFormData } = useContext(Context)
 
-  console.log(authenticated)
+  const { email, password } = formData
 
-  const { name, email, password, password2 } = formData
+  // const login = async () => {
+  //   const { data } = await api.post('/api/users/login', {
+  //     email: 'henrique123@gmail.com',
+  //     password: '1234556'
+  //   })
+  //   console.log(data)
+  // }
 
-  const onChange = (e) => {
-    setFormData(prevState => ({
-      ...prevState,
-      [e.taget.name]: e.target.value
-    }))
-  }
-
-  const login = () => {
-    api.post('/api/users/login', {
-      email: 'henrique123@gmail.com',
-      password: '1234556'
-    })
-  }
-
-  const onSubmit= (e) => {
+  const onSubmit = (e) => {
     e.preventDefault()
 
     handleLogin()
+
+    navigate('/posts')  
   }
 
   return (
@@ -54,7 +49,8 @@ function Login() {
               name='email'
               value={email}
               placeholder='Enter your email'
-              onChange={onChange}
+              onChange={(e) => setFormData(prevState => ({ ...prevState, email: e.target.value }))}
+              required
             />
           </div>
           <div className='form-group'>
@@ -65,7 +61,8 @@ function Login() {
               name='password'
               value={password}
               placeholder='Enter your password'
-              onChange={onChange}
+              onChange={(e) => setFormData(prevState => ({ ...prevState, password: e.target.value }))}
+              required
             />
           </div>
           <div className="form-group">
@@ -74,7 +71,6 @@ function Login() {
             </button>
           </div>
         </form>
-        <button onClick={login} className='btn btn-block'>testeeeeas1!</button>
       </section>
     </>
   )
