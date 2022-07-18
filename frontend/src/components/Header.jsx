@@ -1,4 +1,5 @@
 import { RiUser3Fill, RiLogoutBoxLine, RiLoginBoxLine } from 'react-icons/ri';
+import { GoVerified, GoUnverified } from 'react-icons/go'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { Context } from '../context/AuthContext'
@@ -6,7 +7,8 @@ import { useNavigate } from 'react-router-dom'
 
 function Header() {
     const { authenticated, handleLogout } = useContext(Context)
-
+    const userName = localStorage.getItem('name')
+    const memberStatus = localStorage.getItem('memberStatus')
     const navigate = useNavigate()
 
     const logout = () => {
@@ -17,7 +19,7 @@ function Header() {
   return (
     <header className='header'>
         <div className="logo">
-            <Link to='/'>Teste</Link>
+            {authenticated ? <Link to='/'>Welcome back {userName} - Member status: {memberStatus ? <GoVerified /> : <GoUnverified />}</Link> : ''}
         </div>
         <ul>
             <li>

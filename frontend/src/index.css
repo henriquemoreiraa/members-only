@@ -86,6 +86,41 @@ h3 {
   color: #828282;
 }
 
+.posts {
+  background-color: #f4f4f4;
+  margin: 10px 0 30px;
+  padding: 20px 0 10px;
+}
+
+.posts p {
+  text-align: start;
+  padding: 0 50px;
+}
+
+.posts .date {
+  text-align: end;
+}
+
+.user {
+  text-align: start;
+}
+
+.anonymous {
+  display: flex;
+  align-items: center;
+}
+
+.anonymous h3, h4 {
+  margin: 0;
+  font-style: italic;
+}
+
+.member {
+  display: flex;
+  
+  align-items: center;
+}
+
 .goals {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -111,15 +146,10 @@ h3 {
 .form,
 .content {
   width: 70%;
-  margin: 0 auto;
-}
-
-.form-group {
-  margin-bottom: 10px;
+  margin: 50px auto;
 }
 
 .form-group input,
-.form-group textarea,
 .form-group select {
   width: 100%;
   padding: 10px;
@@ -133,6 +163,22 @@ h3 {
   text-align: left;
   display: block;
   margin: 0 0 5px 3px;
+}
+
+.form-btn {
+  display: flex;
+  justify-content: end;
+}
+
+.text-post {
+  border: 2px solid #555;
+  background-color: #f2f1f13e;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: inherit;
+  font-size: 1.1em;
 }
 
 .btn {
@@ -151,10 +197,6 @@ h3 {
   justify-content: center;
 }
 
-.btn svg {
-  margin-right: 8px;
-}
-
 .btn-reverse {
   background: #fff;
   color: #000;
@@ -163,6 +205,10 @@ h3 {
 .btn-block {
   width: 100%;
   margin-bottom: 20px;
+}
+
+.btn-post {
+  font-size: 1.5em;
 }
 
 .btn:hover {

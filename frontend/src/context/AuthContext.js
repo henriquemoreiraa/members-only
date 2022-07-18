@@ -5,7 +5,7 @@ const Context = createContext();
 
 
 function AuthContext({ children }) {
-    const [loading, setLoading] = useState(true)
+    const [memberStatus, setMemberStatus] = useState()
     const [authenticated, setAuthenticated] = useState(false)
     
     const [formData, setFormData] = useState({
@@ -17,36 +17,48 @@ function AuthContext({ children }) {
 
     useEffect(() => {
         const token = localStorage.getItem('token')
-
+        
         if (token) {
             api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
             setAuthenticated(true)
         }
-
-        setLoading(false)
     }, [])
+
+    // useEffect(() => {
+    //     if (localStorage.getItem('member_status') === true) {
+    //         setMemberStatus(true)
+    //     } else {
+    //         setMemberStatus(false)
+    //     }
+    // }, [])
     
     const { name, email, password, password2 } = formData
     
     const handleLogin = async () => {
 
-        const { data } = await api.post('/api/users/login', {
-            email, 
-            password, 
-          })
-
-        localStorage.setItem('token', JSON.stringify(data.token))
-        api.defaults.headers.Authorization = `Bearer ${data.token}`
-        
-        setAuthenticated(true)
-        
-        console.log(data)
-          
+        try {
+            const { data } = await api.post('/api/users/login', {
+                email, 
+                password, 
+            })   
+            localStorage.setItem('memberStatus', data.member_status)
+            // setMemberStatus(localStorage.getItem('memberStatus'))
+            localStorage.setItem('name', (data.name))
+    
+            localStorage.setItem('token', JSON.stringify(data.token))
+            api.defaults.headers.Authorization = `Bearer ${data.token}`
+            setAuthenticated(true)
+            console.log(data)
+        } catch (error) {
+            window.alert('Invalid credentials')
+        }         
     }
 
     const handleLogout = () => {
         setAuthenticated(false)
         localStorage.removeItem('token')
+        localStorage.removeItem('name')
+        localStorage.removeItem('memberStatus')
         api.defaults.headers.Authorization = undefined
     }
 
@@ -60,13 +72,11 @@ function AuthContext({ children }) {
 
         localStorage.setItem('token', JSON.stringify(data.token))
         api.defaults.headers.Authorization = `Bearer ${data.token}`
-        
-        setAuthenticated(true)
-        console.log(data)
+
     }
 
     return (
-        <Context.Provider value={{ handleRegister, handleLogin, formData, setFormData, authenticated, handleLogout }}>
+        <Context.Provider value={{ handleRegister, handleLogin, formData, setFormData, authenticated, handleLogout, memberStatus }}>
             {children}
         </Context.Provider>
     )

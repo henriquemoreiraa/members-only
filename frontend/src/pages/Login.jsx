@@ -11,24 +11,20 @@ function Login() {
   // })
 
   const navigate = useNavigate()
-  const { handleLogin, formData, setFormData } = useContext(Context)
+  const { handleLogin, formData, setFormData, authenticated } = useContext(Context)
 
   const { email, password } = formData
 
-  // const login = async () => {
-  //   const { data } = await api.post('/api/users/login', {
-  //     email: 'henrique123@gmail.com',
-  //     password: '1234556'
-  //   })
-  //   console.log(data)
-  // }
+  useEffect(() => {
+      if (authenticated === true) {
+          navigate('/posts')
+      }
+  }, [authenticated])
 
   const onSubmit = (e) => {
     e.preventDefault()
 
     handleLogin()
-
-    navigate('/posts')  
   }
 
   return (

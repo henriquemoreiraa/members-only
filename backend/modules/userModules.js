@@ -15,8 +15,7 @@ const userSchema = mongoose.Schema({
         required: true,
     },
     member_status: {
-        type: Boolean,
-        required: true,
+        type: String,
     }
 }, {
     timestamps: true,

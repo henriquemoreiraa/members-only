@@ -25,7 +25,7 @@ const registerUser = asyncHandler( async (req, res) => {
         name,
         email,
         password: hashedPassword,
-        member_status: false
+        member_status: ''
     });
 
     if (user) {

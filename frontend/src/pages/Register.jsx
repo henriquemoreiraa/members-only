@@ -15,7 +15,7 @@ function Register() {
 
     if (password === password2) {
       handleRegister()
-      navigate('/posts')
+      navigate('/login')
     } else {     
       window.alert("Passwords don't match.")
   } 
