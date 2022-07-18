@@ -19,10 +19,16 @@ function Header() {
   return (
     <header className='header'>
         <div className="logo">
-            {authenticated ? <Link to='/'>Welcome back {userName} - Member status: {memberStatus ? <GoVerified /> : <GoUnverified />}</Link> : ''}
+            {authenticated ? <Link to='/'>Welcome back {userName} - Member status: {memberStatus ? <GoVerified /> : 'NOT MEMBER'}</Link> : ''}
         </div>
         <ul>
             <li>
+                {authenticated ?<Link to='/user'>
+                    <RiUser3Fill /> Account
+                </Link> : ''} 
+            </li>
+            <li>
+                
                 {!authenticated ? <Link to='/login'>
                     <RiLoginBoxLine /> Login
                 </Link> : <a className='logout' onClick={logout}><RiLogoutBoxLine /> Logout</a>}

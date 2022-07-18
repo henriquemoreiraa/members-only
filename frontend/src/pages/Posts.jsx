@@ -40,15 +40,11 @@ function Posts() {
     } 
   }, [])
 
-  if (!authenticated) {
-    return <Spinner />
-  }
-
   return (
     <>
       <PostForm setPosts={setPosts} posts={posts}/>
 
-      {posts.map(post => (
+      {!authenticated ? <Spinner /> : posts.map(post => (
         <>
           {deletePost && <DeletePost setDeletePost={setDeletePost} postId={postId} setPosts={setPosts} posts={posts}/>}
           {editPost && <EditPost setEditPost={setEditPost} postId={postId} setPosts={setPosts} posts={posts} currentPost={currentPost}/>}
@@ -71,7 +67,7 @@ function Posts() {
 
           <div className='posts' key={post._id}>
             <p>{post.post}</p>
-            <p className='date'>{new Date(post.updatedAt).toLocaleString()}</p>
+            <p className='date'>{new Date(post.createdAt).toLocaleString()}</p>
           </div>
         </>
       ))

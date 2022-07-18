@@ -4,6 +4,8 @@ import Login from './pages/Login';
 import Posts from './pages/Posts';
 import Register from './pages/Register';
 import Header from './components/Header';
+import User from './pages/User'
+import Page404 from './pages/Page404';
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
             <Routes>
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
-              <Route path='/posts' element={<Posts />} />
+              <Route path='/' element={<Posts />} />
+              <Route path='/user' element={<User />} />
+              <Route path='/*' element={<Page404 />} />
 
             </Routes>
           </div>

@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const asyncHandler = require('express-async-handler');
 const User = require('../modules/userModules');
+const Post = require('../modules/postModules');
 
 const registerUser = asyncHandler( async (req, res) => {
     const { name, email, password } = req.body
@@ -70,7 +71,31 @@ const getUser = asyncHandler( async (req, res) => {
 });
 
 const deleteUser = asyncHandler( async (req, res) => {
-    res.json({ message: 'delete user' });
+    const userId = await User.findById(req.params.id);
+
+    if (!userId) {
+        res.status(400);
+        throw new Error('User not found');
+    };
+
+    await userId.remove();
+
+    res.status(200).json({id: req.params.id});
+});
+
+const putUser = asyncHandler( async (req, res) => {
+    const userId = await User.findById(req.params.id);
+
+    if (!userId) {
+        res.status(400);
+        throw new Error('User not fount');
+    };
+
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+        new: true
+    });
+
+    res.status(200).json(updatedUser);
 });
 
 const generateToken = id => {
@@ -84,4 +109,5 @@ module.exports = {
     loginUser,
     getUser,
     deleteUser,
+    putUser
 };

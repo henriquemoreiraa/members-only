@@ -23,14 +23,6 @@ function AuthContext({ children }) {
             setAuthenticated(true)
         }
     }, [])
-
-    // useEffect(() => {
-    //     if (localStorage.getItem('member_status') === true) {
-    //         setMemberStatus(true)
-    //     } else {
-    //         setMemberStatus(false)
-    //     }
-    // }, [])
     
     const { name, email, password, password2 } = formData
     
@@ -42,14 +34,14 @@ function AuthContext({ children }) {
                 password, 
             })   
             localStorage.setItem('memberStatus', data.member_status)
-            // setMemberStatus(localStorage.getItem('memberStatus'))
             localStorage.setItem('name', (data.name))
             localStorage.setItem('userId', data._id)
+            localStorage.setItem('email', data.email)
     
             localStorage.setItem('token', JSON.stringify(data.token))
             api.defaults.headers.Authorization = `Bearer ${data.token}`
+
             setAuthenticated(true)
-            console.log(data)
         } catch (error) {
             window.alert('Invalid credentials')
         }         
@@ -60,6 +52,8 @@ function AuthContext({ children }) {
         localStorage.removeItem('token')
         localStorage.removeItem('name')
         localStorage.removeItem('memberStatus')
+        localStorage.removeItem('email')
+        
         api.defaults.headers.Authorization = undefined
     }
 

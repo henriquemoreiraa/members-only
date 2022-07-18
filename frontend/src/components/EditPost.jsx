@@ -4,6 +4,8 @@ import { RiSendPlaneFill } from 'react-icons/ri'
 
 function EditPost({ setEditPost, postId, setPosts, posts, currentPost }) {
     const [post, setPost] = useState(currentPost)
+
+    const index = posts.findIndex((post) => postId === post._id)
     
     const onSubmit = (e) => {
         e.preventDefault()
@@ -13,10 +15,12 @@ function EditPost({ setEditPost, postId, setPosts, posts, currentPost }) {
     }
 
     const handlePut = async () => { 
-    
+        
         const { data } = await api.put(`/api/posts/${postId}`, {
             post,
         })
+
+        posts.splice(index, 1)
            
         setPosts([{
             post: data.post,
@@ -25,6 +29,7 @@ function EditPost({ setEditPost, postId, setPosts, posts, currentPost }) {
             _id: data._id,
         }, ...posts])
         setPost('')
+        
     }
 
   return (
@@ -45,10 +50,10 @@ function EditPost({ setEditPost, postId, setPosts, posts, currentPost }) {
                         required
                     />
                 </div>
-                <button>Cancel</button>
-                <button type='submit'>Update</button>                    
+                <button className='buttonDE' onClick={() => setEditPost(false)}>Cancel</button>
+                <button className='buttonDE' type='submit'>Update</button>                    
             </form>
-        </div>
+        </div> 
     </div>
   )
 }

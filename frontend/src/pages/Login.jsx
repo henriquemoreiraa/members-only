@@ -17,7 +17,7 @@ function Login() {
 
   useEffect(() => {
       if (authenticated === true) {
-          navigate('/posts')
+          navigate('/')
       }
   }, [authenticated])
 

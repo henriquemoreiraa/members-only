@@ -8,13 +8,13 @@ function DeletePost({ setDeletePost, postId, setPosts, posts }) {
         const deletedPost = posts.filter(post => post._id !== data.id)
         setPosts(deletedPost)
     }
-
+ 
   return (
     <div className='loadingSpinnerContainer'>
         <div className='containerDE'>
             <h1>Are you sure you want to delete this post?</h1>
-            <button>Cancel</button>
-            <button onClick={() => (handleDelete(), setDeletePost(false))}>Delete</button>
+            <button className='buttonDE' onClick={() => setDeletePost(false)}>Cancel</button>
+            <button className='buttonDE' onClick={() => (handleDelete(), setDeletePost(false))}>Delete</button>
         </div>
     </div>
   )

@@ -265,13 +265,19 @@ h3 {
   background-color: #e6e6e6;
   padding: 2em;
   border-radius: 10px;
+  text-align: center;
 }
 
 .containerE {
   min-width: 50%;
 }
 
-.containerDE button {
+.containerU {
+  padding: 0.1em;
+  text-align: start;
+}
+
+.buttonDE {
   margin: 1em 1em;
   font-size: 1.5em;
   color: #fff;
@@ -281,7 +287,42 @@ h3 {
   background-color: rgb(22, 22, 22);
   cursor: pointer;
 }
-.containerDE button:hover {
+.userInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.userInfo h3 {
+  padding-left: 1em;
+}
+.user-buttons {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  align-items: flex-end;
+}
+.user-buttons button {
+  margin: 0.2em 0.5em;
+  background-color: transparent;
+  color: #000;
+  text-align: end;
+  width: fit-content;
+  font-size: 1.8em;
+  border: none;
+  cursor: pointer;
+}
+
+.cancel {
+  text-align: center;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.cancel:hover {
+  color: #777;
+}
+
+.buttonDE:hover {
   opacity: 0.9;
 }
 

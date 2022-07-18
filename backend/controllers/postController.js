@@ -3,7 +3,6 @@ const asyncHandler = require('express-async-handler');
 const User = require('../modules/userModules');
 
 const getPost = asyncHandler(async (req, res) => {
- 
     const posts = await Post.find();
 
     res.status(200).json(posts);
@@ -27,11 +26,11 @@ const postPost = asyncHandler(async (req, res) => {
 })
 
 const putPost = asyncHandler(async (req, res) => {
-    const productId = await Post.findById(req.params.id);
+    const postId = await Post.findById(req.params.id);
 
-    if (!productId) {
+    if (!postId) {
         res.status(400);
-        throw new Error('Product not fount');
+        throw new Error('Post not fount');
     };
 
     const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body, {
@@ -42,14 +41,14 @@ const putPost = asyncHandler(async (req, res) => {
 })
 
 const deletePost = asyncHandler(async (req, res) => {
-    const productId = await Post.findById(req.params.id);
+    const postId = await Post.findById(req.params.id);
 
-    if (!productId) {
+    if (!postId) {
         res.status(400);
-        throw new Error('Product not found');
+        throw new Error('Post not found');
     };
 
-    await productId.remove();
+    await postId.remove();
 
     res.status(200).json({id: req.params.id});
 })
