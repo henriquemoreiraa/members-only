@@ -8,7 +8,8 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  height: 100vh;
+  height: 100%;
+  padding-bottom: 60px;
 }
 
 a {
@@ -99,6 +100,29 @@ h3 {
 
 .posts .date {
   text-align: end;
+}
+
+.post-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-details button {
+  font-size: 1.5rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.post-details button:hover {
+  color: #777;
+}
+
+.delete-edit {
+  width: 6em;
+  display: flex;
+  justify-content: space-around;
 }
 
 .user {
@@ -235,6 +259,30 @@ h3 {
   border-color: #000 transparent #555 transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
+}
+
+.containerDE {
+  background-color: #e6e6e6;
+  padding: 2em;
+  border-radius: 10px;
+}
+
+.containerE {
+  min-width: 50%;
+}
+
+.containerDE button {
+  margin: 1em 1em;
+  font-size: 1.5em;
+  color: #fff;
+  padding: 0.5em;
+  border-radius: 40px;
+  border: none;
+  background-color: rgb(22, 22, 22);
+  cursor: pointer;
+}
+.containerDE button:hover {
+  opacity: 0.9;
 }
 
 @keyframes spin {

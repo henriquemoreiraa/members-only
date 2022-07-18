@@ -44,6 +44,7 @@ function AuthContext({ children }) {
             localStorage.setItem('memberStatus', data.member_status)
             // setMemberStatus(localStorage.getItem('memberStatus'))
             localStorage.setItem('name', (data.name))
+            localStorage.setItem('userId', data._id)
     
             localStorage.setItem('token', JSON.stringify(data.token))
             api.defaults.headers.Authorization = `Bearer ${data.token}`

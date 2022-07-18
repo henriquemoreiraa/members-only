@@ -4,12 +4,20 @@ import { Context } from '../context/AuthContext'
 import Spinner from '../components/Spinner'
 import { useNavigate } from 'react-router-dom'
 import PostForm from '../components/PostForm';
+import { RiDeleteBinLine, RiEditLine } from 'react-icons/ri'
+import DeletePost from '../components/DeletePost'
+import EditPost from '../components/EditPost';
 
 function Posts() {
   const [posts, setPosts] = useState([])
+  const [deletePost, setDeletePost] = useState(false)
+  const [editPost, setEditPost] = useState(false)
+  const [postId, setPostId] = useState('')
+  const [currentPost, setCurrentPost] = useState('')
 
   const { authenticated } = useContext(Context)
   const memberStatus = localStorage.getItem('memberStatus')
+  const userId = localStorage.getItem('userId')
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -42,10 +50,28 @@ function Posts() {
 
       {posts.map(post => (
         <>
-          {memberStatus ? <h3 className='user'>User: {post.userName}</h3> : <div className='anonymous'><p><strong>Anonymous user</strong> - <i>become a member to see who wrote this post</i> </p></div>}
+          {deletePost && <DeletePost setDeletePost={setDeletePost} postId={postId} setPosts={setPosts} posts={posts}/>}
+          {editPost && <EditPost setEditPost={setEditPost} postId={postId} setPosts={setPosts} posts={posts} currentPost={currentPost}/>}
+          {memberStatus ? 
+          <div className='post-details'>
+            <h3 className='user'>User: {post.userName}</h3>
+            {userId === post.userId ? <div className='delete-edit'>
+              <button onClick={() => (setDeletePost(true), setPostId(post._id))} title='Delete post'>
+                <RiDeleteBinLine /> 
+              </button>
+              <button onClick={() => (setEditPost(true), setPostId(post._id), setCurrentPost(post.post))} title='Edit post'>
+                <RiEditLine /> 
+              </button>
+            </div> : ''}
+          </div>
+          : <div className='anonymous'>
+              <p><strong>Anonymous user</strong> - <i>become a member to see who wrote this post</i> </p>
+            </div>
+          }
+
           <div className='posts' key={post._id}>
             <p>{post.post}</p>
-            <p className='date'>{new Date(post.createdAt).toLocaleString()}</p>
+            <p className='date'>{new Date(post.updatedAt).toLocaleString()}</p>
           </div>
         </>
       ))

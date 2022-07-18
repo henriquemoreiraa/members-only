@@ -2,10 +2,13 @@ import React, { useContext, useState } from 'react'
 import { Context } from '../context/AuthContext'
 import api from '../api'
 import { RiSendPlaneFill } from 'react-icons/ri'
+import { useNavigate } from 'react-router-dom'
 
 function PostForm({ setPosts, posts }) {
     const [post, setPost] = useState('')
     const memberStatus = localStorage.getItem('memberStatus')
+
+    const navigate = useNavigate()
 
     const onSubmit = (e) => {
         e.preventDefault()
