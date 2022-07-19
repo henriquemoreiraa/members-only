@@ -18,7 +18,7 @@ function PostForm({ setPosts, posts }) {
       
     const handlePost = async () => { 
         
-        const { data } = await api.post('/api/posts/', {
+        const { data } = await api.post('/posts/', {
             post,
         })
         setPosts([{

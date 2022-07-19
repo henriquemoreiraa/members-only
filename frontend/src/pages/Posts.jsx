@@ -23,7 +23,7 @@ function Posts() {
   useEffect(() => {
     if (authenticated) {
       (async () => {
-        const { data } = await api.get('/api/posts')
+        const { data } = await api.get('/posts')
         const posts = []
         for (let i in data) {
           posts.unshift(data[i])

@@ -20,7 +20,7 @@ function EditUser({ email, name, userId, setUpdate }) {
 
     const handlePut = async () => { 
         
-        const { data } = await api.put(`/api/users/${userId}`, {
+        const { data } = await api.put(`/users/${userId}`, {
             email: formData.email,
             name: formData.name
         })

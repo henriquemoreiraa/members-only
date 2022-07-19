@@ -8,7 +8,7 @@ function DeleteUser({ userId, setDeleteAcc }) {
     const navigate = useNavigate()
 
     const handleDelete = async () => {       
-        const { data } = await api.delete(`/api/users/${userId}`)
+        const { data } = await api.delete(`/users/${userId}`)
 
         handleLogout()
         navigate('/login')

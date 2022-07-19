@@ -16,7 +16,7 @@ function EditPost({ setEditPost, postId, setPosts, posts, currentPost }) {
 
     const handlePut = async () => { 
         
-        const { data } = await api.put(`/api/posts/${postId}`, {
+        const { data } = await api.put(`/posts/${postId}`, {
             post,
         })
 

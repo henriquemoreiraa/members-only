@@ -33,7 +33,7 @@ function User() {
 
   const handleMember = async () => { 
         
-    const { data } = await api.put(`/api/users/${userId}`, {
+    const { data } = await api.put(`/users/${userId}`, {
         member_status: 'member'
     })
 

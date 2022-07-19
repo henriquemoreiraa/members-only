@@ -3,7 +3,7 @@ import api from '../api'
 
 function DeletePost({ setDeletePost, postId, setPosts, posts }) {
     const handleDelete = async () => {       
-        const { data } = await api.delete(`/api/posts/${postId}`)
+        const { data } = await api.delete(`/posts/${postId}`)
 
         const deletedPost = posts.filter(post => post._id !== data.id)
         setPosts(deletedPost)

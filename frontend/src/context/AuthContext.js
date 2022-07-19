@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { createContext, useState, useEffect } from 'react';
 import api from '../api';
 
@@ -29,7 +30,7 @@ function AuthContext({ children }) {
     const handleLogin = async () => {
 
         try {
-            const { data } = await api.post('/api/users/login', {
+            const { data } = await api.post('/users/login', {
                 email, 
                 password, 
             })   
@@ -59,7 +60,7 @@ function AuthContext({ children }) {
 
     const handleRegister = async () => {
        
-        const { data } = await api.post('api/users/register', {
+        const { data } = await api.post('/users/register', {
             name,
             email,
             password,
