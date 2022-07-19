@@ -1,11 +1,11 @@
 
-# Members Only
+# 😎 Members Only
 
 Members Only it's a project that I've made it to improve my knowledge in the MERN STACK (MongoDB, Express, React and Node).
-The users can only post something or see who posted something if they're members
+The users can only post something or see who posted something if they're members.
 
 
-## Demonstração
+## How it works
 
 Insira um gif ou um link de alguma demonstração
 
@@ -18,7 +18,7 @@ Insira um gif ou um link de alguma demonstração
 - Update/Delete account
 
 
-## Variáveis de Ambiente
+## ⚙️ Variáveis de Ambiente
 
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
 
@@ -55,7 +55,7 @@ Inicie o servidor
 ```
 
 
-## Stack utilizada
+## 🛠️ Stack utilizada
 
 **Front-end:** React
 
