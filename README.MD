@@ -18,44 +18,46 @@ Insira um gif ou um link de alguma demonstração
 - Update/Delete account
 
 
-## ⚙️ Variáveis de Ambiente
+## ⚙️ Environment Variables
 
-Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
+To run this project, you will need to add the following environment variables to your .env file
 
 `MONGODB_USERNAME`
 
 `MONGODB_PASSWORD`
 
 `JWT_SECRET`
-    
-## Rodando localmente
 
-Clone o projeto
+`NODE_ENV`
+    
+## Run Locally
+
+Clone the project
 
 ```bash
   git clone henriquemoreiraa/members-only
 ```
 
-Entre no diretório do projeto
+Go to the project directory
 
 ```bash
   cd members-only
 ```
 
-Instale as dependências
+Install dependencies
 
 ```bash
   npm install
 ```
 
-Inicie o servidor
+Start the server
 
 ```bash
   npm run dev
 ```
 
 
-## 🛠️ Stack utilizada
+## 🛠️ Tech Stack
 
 **Front-end:** React
 

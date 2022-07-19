@@ -57,7 +57,8 @@ function User() {
                 <p>{name}</p>
                 <h3>email: </h3>
                 <p>{email}</p>
-                <p>member status: {memberStatus ? <GoVerified fill='#02735E'/> : 'NOT MEMBER'}</p>
+                <h3>member status: </h3>
+                <p>{memberStatus ? <GoVerified fill='#02735E'/> : 'NOT MEMBER'}</p>
             </div>
             <div className='user-buttons'>
                 <button title='Delete account' onClick={() => setDeleteAcc(true)} ><RiDeleteBinLine /></button>

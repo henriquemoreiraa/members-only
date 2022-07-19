@@ -33,7 +33,7 @@ function Login() {
         <h1>
           <RiLoginBoxLine /> Login
         </h1>
-        <p>Login and start create posts for members only</p>
+        <p>Login and start creating posts for members only</p>
       </section>
       <section className='form'>
         <form onSubmit={onSubmit}>
