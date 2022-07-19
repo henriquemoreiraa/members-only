@@ -7,7 +7,7 @@ The users can only post something or see who posted something if they're members
 
 ## How it works
 
-Insira um gif ou um link de alguma demonstração
+<img style="border-radius: 5px" src="./screenshots/Members-Only.gif">
 
 
 ## Features
