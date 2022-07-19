@@ -33,7 +33,7 @@ function PostForm({ setPosts, posts }) {
     
 
   return (
-    <section className='form'>
+    <section className='form postForm'>
         <h1>{memberStatus ? 'Create new post' : 'Become a member to start creating posts!' }</h1>
         {memberStatus ?
         <>
@@ -49,10 +49,12 @@ function PostForm({ setPosts, posts }) {
                         onChange={(e) => setPost(e.target.value)}
                         className='text-post'
                         required
+                        autoFocus
+                        placeholder='What are you thinking?'
                     />
                 </div>
                 <div className="form-btn">
-                    <button className='btn btn-post' type='submit'>< RiSendPlaneFill /></button>
+                    <button className='btn btn-post' type='submit'>Post</button>
                 </div>
             </form>
         </>

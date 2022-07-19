@@ -23,7 +23,7 @@ function User() {
     }
     const { name, email, userId, memberStatus } = userInfo
     
-  const navigate = useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (!localStorage.getItem('token')) {
@@ -53,13 +53,15 @@ function User() {
        {update ? <EditUser email={email} name={name} userId={userId} setUpdate={setUpdate}/> : deleteAcc ? <DeleteUser userId={userId} setDeleteAcc={setDeleteAcc} /> :
         <div className='userInfo'>
             <div>
-                <h3>name: <br /> {name}</h3>
-                <h3>email: <br /> {email}</h3>
-                <h3>member status: {memberStatus ? <GoVerified /> : 'NOT MEMBER'}</h3>
+                <h3>name: </h3>
+                <p>{name}</p>
+                <h3>email: </h3>
+                <p>{email}</p>
+                <h3>member status: {memberStatus ? <GoVerified fill='#02735E'/> : 'NOT MEMBER'}</h3>
             </div>
             <div className='user-buttons'>
-                <button onClick={() => setDeleteAcc(true)} ><RiDeleteBinLine /></button>
-                <button onClick={() => setUpdate(true)}><RiEditLine /></button>
+                <button title='Delete account' onClick={() => setDeleteAcc(true)} ><RiDeleteBinLine /></button>
+                <button title='Update account' onClick={() => setUpdate(true)}><RiEditLine /></button>
                 
             </div>
         </div>}

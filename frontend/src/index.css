@@ -9,7 +9,8 @@
 body {
   font-family: 'Poppins', sans-serif;
   height: 100%;
-  padding-bottom: 60px;
+  margin-bottom: 160px;
+  background-color: #f4f4f4;
 }
 
 a {
@@ -49,7 +50,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid #d7d7d7;
   margin-bottom: 60px;
 }
 
@@ -88,14 +89,18 @@ h3 {
 }
 
 .posts {
-  background-color: #f4f4f4;
+  background-color: #fff;
   margin: 10px 0 30px;
   padding: 20px 0 10px;
+  border-radius: 10px;
+  box-shadow:
+  0px 0px 0.6px rgba(0, 0, 0, 0.045),
+  0px 0px 5px rgba(0, 0, 0, 0.09)
 }
 
 .posts p {
   text-align: start;
-  padding: 0 50px;
+  padding: 0 1em;
 }
 
 .posts .date {
@@ -127,6 +132,7 @@ h3 {
 
 .user {
   text-align: start;
+  color: rgb(49, 49, 49);
 }
 
 .anonymous {
@@ -195,8 +201,9 @@ h3 {
 }
 
 .text-post {
-  border: 2px solid #555;
-  background-color: #f2f1f13e;
+  border: none;
+  outline: none;
+  background-color: #f8f8f8;
   width: 100%;
   padding: 10px;
   border-radius: 5px;
@@ -205,14 +212,25 @@ h3 {
   font-size: 1.1em;
 }
 
+.postForm {
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow:
+  0px 0px 0.6px rgba(0, 0, 0, 0.045),
+  0px 0px 5px rgba(0, 0, 0, 0.09)
+;
+color: rgb(49, 49, 49);
+}
+
 .btn {
   padding: 10px 20px;
-  border: 1px solid #000;
+  border: none;
   border-radius: 5px;
-  background: #000;
+  background: #02735E;
   color: #fff;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   cursor: pointer;
   text-align: center;
   appearance: button;
@@ -232,7 +250,7 @@ h3 {
 }
 
 .btn-post {
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .btn:hover {
@@ -262,7 +280,10 @@ h3 {
 }
 
 .containerDE {
-  background-color: #e6e6e6;
+  background-color: #fff;
+  box-shadow:
+  0px 0px 0.6px rgba(0, 0, 0, 0.045),
+  0px 0px 5px rgba(0, 0, 0, 0.09);
   padding: 2em;
   border-radius: 10px;
   text-align: center;
@@ -273,7 +294,7 @@ h3 {
 }
 
 .containerU {
-  padding: 0.1em;
+  padding: 1em;
   text-align: start;
 }
 
@@ -284,16 +305,22 @@ h3 {
   padding: 0.5em;
   border-radius: 40px;
   border: none;
-  background-color: rgb(22, 22, 22);
+  background-color: #02735E;
   cursor: pointer;
 }
 .userInfo {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 .userInfo h3 {
   padding-left: 1em;
+  margin-bottom: 0;
+}
+.userInfo p {
+  margin-left: 1.2em;
+  margin-bottom: 1em;
+  margin-top: 0;
+  border-bottom: 1px solid #828282;
 }
 .user-buttons {
   display: flex;
@@ -307,7 +334,7 @@ h3 {
   color: #000;
   text-align: end;
   width: fit-content;
-  font-size: 1.8em;
+  font-size: 1.5em;
   border: none;
   cursor: pointer;
 }

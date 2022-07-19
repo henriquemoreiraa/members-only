@@ -19,7 +19,7 @@ function Header() {
   return (
     <header className='header'>
         <div className="logo">
-            {authenticated ? <Link to='/'>Welcome back {userName} - Member status: {memberStatus ? <GoVerified /> : 'NOT MEMBER'}</Link> : ''}
+            {authenticated ? <Link to='/'>Welcome back {userName} - Member status: {memberStatus ? <GoVerified fill='#02735E'/> : 'NOT MEMBER'}</Link> : ''}
         </div>
         <ul>
             <li>
